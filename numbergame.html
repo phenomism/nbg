@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name = "viewport" content = "width = device-width initial-scale=1.0; maximum-scale=1.0;">
+    <title>NumberGame</title>
+    
+    <style>
+		body{
+	background-color: #000000;
+	color: #FFF;
+		}
+        #nonzero{
+          width:20%;
+          height:20%;
+          font-size:32px;
+        }
+     	 #zero{
+      	  width:40%;
+        	height:20%;
+        	font-size:32px;
+      	}
+		#answerinput{
+	font-size: 24px;
+	color:#FFF;
+	height: 10%;
+	width: 50%;
+	text-align: center;
+	border: 0px;
+	background-color: black;
+			
+		}
+		.answer{
+			text-align:center;
+			}
+		.range{
+	font-size: 26px;
+	text-align: center;
+	color: #FFF
+		}
+		
+		.buttons{
+			text-align:center;
+		}
+		
+    </style>
+    
+    <script>
+				function showhide(id)
+				{
+  				  var div = document.getElementById(id);
+					if (div.style.display !== "none") {
+  					 		 div.style.display = "none";
+						}
+					else {
+   							div.style.display = "block";
+							}
+						}
+ 
+ 		/*var c;
+		var ctx;
+		
+		function init(){
+				c = document.getElementById("myCanvas");
+				ctx = c.getContext("2d");
+				draw();
+		}
+		
+		function draw(){
+			var posX = 0;
+			setInterval(function(){
+				if(posX >= 600)
+				{
+					ctx.clearRect(0, 0, 600, 50);
+				}
+				else{
+					posX += 2;
+					ctx.fillStyle="black";
+					ctx.fillRect(0,0,posX,50);
+				}
+				},3);
+			setTimeout(function() {
+ 				   $('canvas').hide();
+				}, 1000); // <-- time in milliseconds
+		}
+		ctx.fillStyle="orange";
+		ctx.fillRect(0,0,600,50);
+		}*/
+		
+		
+			var x;
+			var y = 0;
+			var z = 100;
+			var a = Math.floor(Math.random() * 100);
+			var score = 0
+		
+		function game(){
+			document.getElementById('yValue').innerHTML = y;
+			document.getElementById('zValue').innerHTML = z;
+			document.getElementById('score').innerHTML = score;
+		}
+
+				
+			function changeThis(){
+			var x = document.getElementById('answerinput').value;
+			
+			if(x>y && x<z){
+				if(x<a){
+					y = x;
+					document.getElementById('yValue').innerHTML = x;
+					document.getElementById('score').innerHTML = ++score;
+				}
+				else if(x>a){
+					z = x;
+					document.getElementById('zValue').innerHTML = x;
+					document.getElementById('score').innerHTML = ++score;
+
+				}
+				else if(x==a){
+					document.getElementById('to').innerHTML = x;
+					document.getElementById('zValue').innerHTML = "";
+					document.getElementById('yValue').innerHTML = "";
+				}
+			}
+				
+			}
+			
+			
+			function ClearFields() {
+     			document.getElementById("answerinput").value = "";
+			}
+			
+ 
+ 		</script>
+  </head>
+  <body onload="game()">
+    <div style="text-align: center;" id="splash">
+      <img src="title.png" width=80%>
+      <br />
+      <button id="reset" onclick="history.go(0)">Reset</button>
+      
+    </div>
+    <br>
+    <br>
+    
+    
+    
+    <div class="scoreboard" style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
+      <p>Number of tries: <span id="score"></span></p>
+      </div>
+      
+      
+      
+      <div class="range">
+      	<span id="yValue"></span>
+      	<span id="to"> ~ </span>
+      	<span id="zValue"></span>
+  </div>
+      
+      
+      
+      <div class="answer">
+      <form name="answerform">
+      <input id="answerinput" type="text" name="answerinput" />
+      </form>
+      </div>
+      
+      
+      
+      <br />
+      
+      <div class="buttons">
+      <input id="nonzero" type="image" src="7.png" value=" 7 " onClick="answerform.answerinput.value += '7'" />
+      <input id="nonzero" type="image" src="8.png" value=" 8 " onClick="answerform.answerinput.value += '8'" />
+      <input id="nonzero" type="image" src="9.png" value=" 9 " onClick="answerform.answerinput.value += '9'" />
+      <br />
+      <input id="nonzero" type="image" src="4.png" value=" 4 " onClick="answerform.answerinput.value += '4'" />
+      <input id="nonzero" type="image" src="5.png" value=" 5 " onClick="answerform.answerinput.value += '5'" />
+      <input id="nonzero" type="image" src="6.png" value=" 6 " onClick="answerform.answerinput.value += '6'" />
+      <br />
+      <input id="nonzero" type="image" src="1.png" value=" 1 " onClick="answerform.answerinput.value += '1'" />
+      <input id="nonzero" type="image" src="2.png" value=" 2 " onClick="answerform.answerinput.value += '2'" />
+      <input id="nonzero" type="image" src="3.png" value=" 3 " onClick="answerform.answerinput.value += '3'" />
+      <br />
+      <input id="nonzero" type="image" src="0.png" value=" 0 " onClick="answerform.answerinput.value += '0'" />
+      <input id="zero" type="image" src="ok.png" value=" OK " onClick="changeThis(); ClearFields()" />
+    	</div>
+        
+  </body>
+</html>
